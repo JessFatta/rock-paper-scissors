@@ -1,0 +1,86 @@
+html {
+  font-family: "Montserrat", sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  align-content: stretch;
+  text-align: center;
+  height: 100vh;
+}
+
+.left {
+ width: 20%;
+ justify-content: flex-start;
+ background-color: azure;
+ color: powderblue;
+}
+
+.human {
+  padding: 9%;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  background-color: powderblue;
+  color: azure;
+  font-size: 5vh;
+}
+
+.rock-paper-scissors {
+  justify-content: flex-start;
+  padding-top: 3%;
+}
+
+.right {
+  width: 20%;
+  justify-content: flex-start;
+  background-color: azure;
+  color: powderblue;
+}
+
+.computer {
+  padding: 9%;
+}
+
+.game-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  padding-top: 14%;
+
+}
+
+
+.classic-game {
+  margin-bottom: 5%;
+  padding: 4%;
+  padding-top: 7%;
+  padding-bottom: 7%;
+  background-color: azure;
+  border-color: azure;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.difficult-game {
+  padding: 4%;
+  padding-top: 7%;
+  padding-bottom: 7%;
+  background-color: azure;
+  border-color: azure;
+  cursor: pointer;
+  font-size: 15px;
+}
