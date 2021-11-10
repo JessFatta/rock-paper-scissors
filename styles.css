@@ -22,15 +22,24 @@ main {
  justify-content: flex-start;
  background-color: azure;
  color: powderblue;
+}
 
+.human {
+  padding: 9%;
 }
 
 .middle {
+  display: flex;
+  flex-direction: column;
   width: 60%;
-  justify-content: center;
   background-color: powderblue;
   color: azure;
   font-size: 5vh;
+}
+
+.rock-paper-scissors {
+  justify-content: flex-start;
+  padding-top: 3%;
 }
 
 .right {
@@ -40,6 +49,38 @@ main {
   color: powderblue;
 }
 
+.computer {
+  padding: 9%;
+}
+
 .game-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   flex-direction: column;
+  padding-top: 14%;
+
+}
+
+
+.classic-game {
+  margin-bottom: 5%;
+  padding: 4%;
+  padding-top: 7%;
+  padding-bottom: 7%;
+  background-color: azure;
+  border-color: azure;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.difficult-game {
+  padding: 4%;
+  padding-top: 7%;
+  padding-bottom: 7%;
+  background-color: azure;
+  border-color: azure;
+  cursor: pointer;
+  font-size: 15px;
 }
