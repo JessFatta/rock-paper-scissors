@@ -84,3 +84,27 @@ main {
   cursor: pointer;
   font-size: 15px;
 }
+
+.classic-icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.paper-image {
+  height: 150px;
+  width: 150px;
+}
+
+.rocks-image {
+  height: 150px;
+  width: 150px;
+}
+
+.scissors-image {
+  height: 150px;
+  width: 150px;
+}
+
+.hidden {
+  display: none;
+}
