@@ -70,7 +70,6 @@ main {
   align-content: center;
   flex-direction: column;
   padding-top: 14%;
-
 }
 
 
@@ -114,8 +113,6 @@ main {
   height: 150px;
   width: 150px;
 }
-
-
 
 .hidden {
   display: none;
