@@ -96,7 +96,7 @@ var choices= ["rocks", "paper", "scissors"]
 };
 
 function getPlayerChoice() {
-var playerChoices = ["rocks", "paper", "scissors"]
+var playerChoices = ["rocks", "scissors", "paper"]
 for(i = 0; i < playerChoices.length; i++) {
   playerChoice = playerChoices[i];
   newPlayer = new Player(playerChoice)
@@ -114,11 +114,11 @@ function playGame(player, computer) {
   computerChoice = getRandomChoice();
   playerChoice = getPlayerChoice();
   if (newPlayer === "paper" && computerChoice === "rocks") {
-    console.log(playerChoice + " beats " + computerChoice + ". You won this round!");
+      console.log(playerChoice + " beats " + computerChoice + ". You won this round!");
   } else if (playerChoice === "paper" && computerChoice === "scissors") {
-      console.log(computerChoice + " beats " + newPlayer + ". You lost this round.");
+      console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
   } else if (playerChoice === "paper" && computerChoice === "paper") {
-    console.log("Its a draw");
+      console.log("Its a draw");
   } else if (playerChoice === "rocks" && computerChoice === "rocks") {
       console.log("Its a draw");
   } else if (playerChoice === "rocks" && computerChoice === "scissors") {
@@ -132,13 +132,13 @@ function playGame(player, computer) {
   } else if (playerChoice === "scissors" && computerChoice === "paper") {
       console.log(playerChoice + " beats " + computerChoice + ". You won this round.");
   }
-    showCorrectChoice();
+    //showCorrectChoice();
     //showPlayerChoice();
 }
 
 function showCorrectChoice() {
 hideVisibility(classicIcons)
-showVisibility(classicSelected)
+//showVisibility(classicSelected)
   console.log(computerChoice)
   //console.log(rocksImage)
   console.log(playerChoice)
@@ -159,7 +159,7 @@ showVisibility(classicSelected)
 
 function showPlayerChoice() {
   hideVisibility(classicIcons)
-  showVisibility(classicSelected)
+  //showVisibility(classicSelected)
   if (playerChoice === "rocks") {
   classicSelected.innerHTML += `${rocksShow}`;
   } else if (playerChoice === "paper") {
