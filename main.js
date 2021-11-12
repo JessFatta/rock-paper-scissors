@@ -1,15 +1,16 @@
 var classicGameButton = document.querySelector(".classic-game");
 var difficultGameButton = document.querySelector(".difficult-game");
 var paperImage = document.querySelector(".paper-image");
-//var paperImageSelected = document.querySelector(".paper-image2");
+var paperShow = `<img src="./assets/happy-paper.png" class="paper-image"/>`
 var rocksImage = document.querySelector(".rocks-image");
-// var rocksImageSelected = document.querySelector(".rocks-image2");
+var rocksShow = `<img src="./assets/happy-rocks.png" class="rocks-image"/>`
 var scissorsImage = document.querySelector(".scissors-image");
-//var scissorsImageSelected = document.querySelector(".scissors-image2");
+var scissorsShow = `<img src="./assets/happy-scissors.png" class="scissors-image"/>`
 var fighterChoice = document.querySelector(".fighter");
 var chooseGameHeadline = document.querySelector(".choose-game-headline");
 var changeGameButton = document.querySelector(".change-game-button");
-
+var classicIcons = document.querySelector(".classic-icons")
+var classicSelected = document.querySelector(".classic-selected")
 
 
 classicGameButton.addEventListener("click", playClassic);
@@ -17,12 +18,14 @@ paperImage.addEventListener("click", playGame);
 rocksImage.addEventListener("click", playGame);
 scissorsImage.addEventListener("click", playGame);
 difficultGameButton.addEventListener("click", playDifficult);
-// paperImage.addEventListener("click", choosePaper);
-// rocksImage.addEventListener("click", chooseRock);
-// scissorsImage.addEventListener("click", chooseScissors);
+classicIcons.addEventListener("click", showCorrectChoice);
+//classicSelected.addEventListener("click", );
 changeGameButton.addEventListener("click", goHome);
 
 
+var computerChoice;
+var playerChoice;
+//var newPlayer =;
 
 function showEmojis(element) {
   element.classList.remove("hidden")
@@ -61,7 +64,7 @@ function playDifficult() {
   hideVisibility(chooseGameHeadline);
   showVisibility(fighterChoice);
   showVisibility(changeGameButton);
-}
+};
 
 function goHome() {
   showEmojis(classicGameButton);
@@ -74,38 +77,6 @@ function goHome() {
   hideVisibility(changeGameButton);
 };
 
-// function choosePaper() {
-//   hideEmojis(classicGameButton);
-//   hideEmojis(difficultGameButton);
-//   showEmojis(paperImage);
-//   hideEmojis(rocksImage);
-//   hideEmojis(scissorsImage);
-//   hideVisibility(chooseGameHeadline);
-//   hideVisibility(fighterChoice);
-//   showVisibility(changeGameButton);
-// }
-//
-// function chooseRock() {
-//   hideEmojis(classicGameButton);
-//   hideEmojis(difficultGameButton);
-//   hideEmojis(paperImage);
-//   showEmojis(rocksImage);
-//   hideEmojis(scissorsImage);
-//   hideVisibility(chooseGameHeadline);
-//   hideVisibility(fighterChoice);
-//   showVisibility(changeGameButton);
-// }
-//
-// function chooseScissors() {
-//   hideEmojis(classicGameButton);
-//   hideEmojis(difficultGameButton);
-//   hideEmojis(paperImage);
-//   hideEmojis(rocksImage);
-//   showEmojis(scissorsImage);
-//   hideVisibility(chooseGameHeadline);
-//   hideVisibility(fighterChoice);
-//   showVisibility(changeGameButton);
-// }
 
 function gameView() {
   hideEmojis(classicGameButton);
@@ -113,41 +84,88 @@ function gameView() {
   hideVisibility(chooseGameHeadline);
   hideVisibility(fighterChoice);
   showVisibility(changeGameButton);
-}
+};
 
 function getRandomChoice() {
-  var choices = [rocksImage, paperImage, scissorsImage];
-
+var choices= ["rocks", "paper", "scissors"]
   for(i = 0; i < choices.length; i++) {
   var randomChoice = Math.floor(Math.random() * choices.length);
-  var computerChoice = choices[randomChoice]
+  computerChoice = choices[randomChoice]
     }
     return computerChoice;
+};
+
+function getPlayerChoice() {
+var playerChoices = ["rocks", "paper", "scissors"]
+for(i = 0; i < playerChoices.length; i++) {
+  playerChoice = playerChoices[i];
+  newPlayer = new Player(playerChoice)
   }
+  return playerChoice
+  //showPlayerChoice();
+  playGame()
+};
+
 
 function playGame(player, computer) {
-  var newPlayer = new Player()
-  var computerChoice = getRandomChoice();
-  if (paperImage && computerChoice === rocksImage) {
-    console.log(newPlayer + " beats " + computerChoice + ". You won this round!");
-    showEmojis(paperImage)
-    showEmojis(computerChoice)
-  } else if (paperImage && computerChoice === scissorsImage) {
+  hideVisibility(classicIcons)
+//  var playerChoice = this.playerChoice;
+ //newPlayer = new Player(playerChoice)
+  computerChoice = getRandomChoice();
+  playerChoice = getPlayerChoice();
+  if (newPlayer === "paper" && computerChoice === "rocks") {
+    console.log(playerChoice + " beats " + computerChoice + ". You won this round!");
+  } else if (playerChoice === "paper" && computerChoice === "scissors") {
       console.log(computerChoice + " beats " + newPlayer + ". You lost this round.");
-  } else if (paperImage && computerChoice === paperImage) {
+  } else if (playerChoice === "paper" && computerChoice === "paper") {
     console.log("Its a draw");
-  } else if (rocksImage && computerChoice === rocksImage) {
+  } else if (playerChoice === "rocks" && computerChoice === "rocks") {
       console.log("Its a draw");
-  } else if (rocksImage && computerChoice === scissorsImage) {
-      console.log(newPlayer + " beats " + computerChoice + ". You won this round.");
-  } else if (rocksImage && computerChoice === paperImage) {
-      console.log(computerChoice + " beats " + newPlayer + ". You lost this round.");
-  } else if (scissorsImage && computerChoice === scissorsImage) {
+  } else if (playerChoice === "rocks" && computerChoice === "scissors") {
+      console.log(playerChoice + " beats " + computerChoice + ". You won this round.");
+  } else if (playerChoice === "rocks" && computerChoice === "paper") {
+      console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
+  } else if (playerChoice === "scissors" && computerChoice === "scissors") {
       console.log("Its a draw");
-  } else if (scissorsImage && computerChoice === rocksImage) {
-      console.log(computerChoice + " beats " + newPlayer + ". You lost this round.");
-  } else if (scissorsImage && computerChoice === paperImage) {
-      console.log(newPlayer + " beats " + computerChoice + ". You won this round.");
+  } else if (playerChoice === "scissors" && computerChoice === "rocks") {
+      console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
+  } else if (playerChoice === "scissors" && computerChoice === "paper") {
+      console.log(playerChoice + " beats " + computerChoice + ". You won this round.");
+  }
+    showCorrectChoice();
+    //showPlayerChoice();
+}
+
+function showCorrectChoice() {
+hideVisibility(classicIcons)
+showVisibility(classicSelected)
+  console.log(computerChoice)
+  //console.log(rocksImage)
+  console.log(playerChoice)
+  if (computerChoice === "rocks") {
+   classicSelected.innerHTML += `
+   ${rocksShow}`;
+  } else if (computerChoice === "paper") {
+  classicSelected.innerHTML += `
+  ${paperShow}`;
+  } else if
+  (computerChoice === "scissors") {
+  classicSelected.innerHTML += `
+  ${scissorsShow}`;
+
+  }
+  showPlayerChoice();
+};
+
+function showPlayerChoice() {
+  hideVisibility(classicIcons)
+  showVisibility(classicSelected)
+  if (playerChoice === "rocks") {
+  classicSelected.innerHTML += `${rocksShow}`;
+  } else if (playerChoice === "paper") {
+  classicSelected.innerHTML += `${paperShow}`;
+  } else if (playerChoice === "scissors") {
+  classicSelected.innerHTML += `${scissorsShow}`;
   }
 
 }
