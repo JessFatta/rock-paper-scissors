@@ -14,6 +14,7 @@ var classicSelected = document.querySelector(".classic-selected")
 var rocksSelected = document.querySelector(".rocks-image");
 var paperSelected = document.querySelector(".paper-image");
 var scissorsSelected = document.querySelector(".scissors-image");
+var winnerAnnounce = document.querySelector(".winner-announce");
 
 
 classicGameButton.addEventListener("click", playClassic);
@@ -92,6 +93,10 @@ function gameView() {
   showVisibility(changeGameButton);
 };
 
+// function continuePlay() {
+//   gameView();
+// }
+
 function getRandomChoice() {
 var choices= ["rocks", "paper", "scissors"]
   for(i = 0; i < choices.length; i++) {
@@ -136,28 +141,39 @@ function clickScissors() {
 
 function playGame(player, computer) {
   hideVisibility(classicIcons)
+  hideVisibility(fighterChoice)
+  showVisibility(winnerAnnounce)
 //  var playerChoice = this.playerChoice;
  //newPlayer = new Player(playerChoice)
   computerChoice = getRandomChoice();
 // playerChoice = getPlayerChoice();
   if (playerChoice === "paper" && computerChoice === "rocks") {
-      console.log(playerChoice + " beats " + computerChoice + ". You won this round!");
+      winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
+      // console.log(playerChoice + " beats " + computerChoice + ". You won this round!");
   } else if (playerChoice === "paper" && computerChoice === "scissors") {
-      console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
+      winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
+      // console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
   } else if (playerChoice === "paper" && computerChoice === "paper") {
-      console.log("Its a draw");
+      winnerAnnounce.innerText += `Its a draw`;
+      // console.log("Its a draw");
   } else if (playerChoice === "rocks" && computerChoice === "rocks") {
-      console.log("Its a draw");
+    winnerAnnounce.innerText += `Its a draw`;
+    //  console.log("Its a draw");
   } else if (playerChoice === "rocks" && computerChoice === "scissors") {
-      console.log(playerChoice + " beats " + computerChoice + ". You won this round.");
+    winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
+      // console.log(playerChoice + " beats " + computerChoice + ". You won this round.");
   } else if (playerChoice === "rocks" && computerChoice === "paper") {
-      console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
+    winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
+      // console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
   } else if (playerChoice === "scissors" && computerChoice === "scissors") {
-      console.log("Its a draw");
+    winnerAnnounce.innerText += `Its a draw`;
+      // console.log("Its a draw");
   } else if (playerChoice === "scissors" && computerChoice === "rocks") {
-      console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
+    winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
+      // console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
   } else if (playerChoice === "scissors" && computerChoice === "paper") {
-      console.log(playerChoice + " beats " + computerChoice + ". You won this round.");
+    winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
+      // console.log(playerChoice + " beats " + computerChoice + ". You won this round.");
   }
     //showCorrectChoice();
     //showPlayerChoice();
@@ -196,3 +212,4 @@ function showPlayerChoice() {
   }
 
 }
+setTimeout(playClassic(), 3000);

@@ -1,21 +1,23 @@
 class Player {
-  constructor(playerChoice) {
-    //this.name = human;
-  //  this.token = token;
-  //  this.wins = wins;
+  constructor(name, token, wins, playerChoice) {
+    this.name = name;
+    this.token = token;
+    this.wins = wins;
     this.playerChoice = playerChoice;
    //this.computerChoice = computerChoice;
   }
 
 
+//setTimeout(playClassic(), 1000){
 
+//}
 
   saveWinsToStorage() {
-
+  // local storage and increment wins
   }
 
   retrieveWinsFromStorage() {
-
+    // local storage for data persistance -- maybe not necessary?
   }
 
   takeTurn(choice) {
