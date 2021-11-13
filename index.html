@@ -4,25 +4,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
   </head>
-    <title>Rock, Paper, Scissors</title>
+  <title>Rock, Paper, Scissors</title>
   <body>
     <main>
       <aside class="left">
           <h2 class="human"> 🙋🏻‍♀️ <br> HUMAN</h2>
           <p>Wins: 0</p>
+          <button class="change-game-button hidden">CHANGE GAME?</button>
       </aside>
       <aside class="middle">
           <h1 class="rock-paper-scissors">Rock, Paper, Scissors</h1>
-            <p>Choose your game!</p>
+            <p class="choose-game-headline">Choose your game!</p>
+            <p class="fighter hidden">Choose your fighter!</p>
+            <h5><p class="winner-announce hidden"></p></h5>
           <div class="game-buttons">
             <button class="classic-game"><h2> 🪨 Classic Game 🪨  </h2>
               <p>rock > scissors</p>
               <p>paper > rock</p>
-              <p>scissors > paper</p></button>
+              <p>scissors > paper</p>
+            </button>
+              <section class="classic-icons">
+                <img src="./assets/happy-paper.png" class="paper-image hidden"/>
+                <img src="./assets/happy-rocks.png" class="rocks-image hidden"/>
+                <img src="./assets/happy-scissors.png" class="scissors-image hidden"/>
+              </section>
+              <section class="classic-selected">
+                <img src="./assets/happy-paper.png" class="paper-selected hidden"/>
+                <img src="./assets/happy-rocks.png" class="rocks-selected hidden"/>
+                <img src="./assets/happy-scissors.png" class="scissors-selected hidden"/>
+              </section>
             <button class="difficult-game"><h2> 👽 Difficult Game 👽 </h2>
               <p>bullshit vs bullshit</p>
               <p>blah blah blah</p>
-              <p>jfdifhdughvdj</p></button>
+              <p>jfdifhdughvdj</p>
+            </button>
           </div>
       </aside>
       <aside class="right">
@@ -31,4 +46,7 @@
       </aside>
     </main>
   </body>
+ <script src="./player.js"> </script>
+ <script src="./game.js"> </script>
+ <script src="./main.js"></script>
 </html>

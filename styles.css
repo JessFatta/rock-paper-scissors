@@ -24,6 +24,16 @@ main {
  color: powderblue;
 }
 
+.change-game-button {
+  justify-content: center;
+  align-content: center;
+  margin-top: 80px;
+  background-color: powderblue;
+  color: azure;
+  border: 0;
+  padding: 10px;
+}
+
 .human {
   padding: 9%;
 }
@@ -60,7 +70,6 @@ main {
   align-content: center;
   flex-direction: column;
   padding-top: 14%;
-
 }
 
 
@@ -83,4 +92,28 @@ main {
   border-color: azure;
   cursor: pointer;
   font-size: 15px;
+}
+
+.classic-icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.paper-image {
+  height: 150px;
+  width: 150px;
+}
+
+.rocks-image {
+  height: 150px;
+  width: 150px;
+}
+
+.scissors-image {
+  height: 150px;
+  width: 150px;
+}
+
+.hidden {
+  display: none;
 }
