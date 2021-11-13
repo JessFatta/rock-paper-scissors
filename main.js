@@ -1,38 +1,43 @@
 var classicGameButton = document.querySelector(".classic-game");
 var difficultGameButton = document.querySelector(".difficult-game");
+var changeGameButton = document.querySelector(".change-game-button");
+
 var paperImage = document.querySelector(".paper-image");
 var paperShow = `<img src="./assets/happy-paper.png" class="paper-image"/>`
+var paperSelected = document.querySelector(".paper-image");
 var rocksImage = document.querySelector(".rocks-image");
 var rocksShow = `<img src="./assets/happy-rocks.png" class="rocks-image"/>`
+var rocksSelected = document.querySelector(".rocks-image");
 var scissorsImage = document.querySelector(".scissors-image");
 var scissorsShow = `<img src="./assets/happy-scissors.png" class="scissors-image"/>`
-var fighterChoice = document.querySelector(".fighter");
-var chooseGameHeadline = document.querySelector(".choose-game-headline");
-var changeGameButton = document.querySelector(".change-game-button");
-var classicIcons = document.querySelector(".classic-icons")
-var classicSelected = document.querySelector(".classic-selected")
-var rocksSelected = document.querySelector(".rocks-image");
-var paperSelected = document.querySelector(".paper-image");
 var scissorsSelected = document.querySelector(".scissors-image");
+
+var fighterChoice = document.querySelector(".fighter");
 var winnerAnnounce = document.querySelector(".winner-announce");
+var chooseGameHeadline = document.querySelector(".choose-game-headline");
+
+var classicIcons = document.querySelector(".classic-icons");
+var classicSelected = document.querySelector(".classic-selected");
 
 
 classicGameButton.addEventListener("click", playClassic);
-paperImage.addEventListener("click", playGame);
-rocksImage.addEventListener("click", playGame);
-scissorsImage.addEventListener("click", playGame);
 difficultGameButton.addEventListener("click", playDifficult);
-classicIcons.addEventListener("click", showCorrectChoice);
 changeGameButton.addEventListener("click", goHome);
-rocksSelected.addEventListener("click", clickRocks);
+
+paperImage.addEventListener("click", playGame);
 paperSelected.addEventListener("click", clickPaper);
+rocksImage.addEventListener("click", playGame);
+rocksSelected.addEventListener("click", clickRocks);
+scissorsImage.addEventListener("click", playGame);
 scissorsSelected.addEventListener("click", clickScissors);
 
+classicIcons.addEventListener("click", showCorrectChoice);
 
 
 var computerChoice;
 var playerChoice;
-//var newPlayer =;
+var playerChoice = ["Rocks", "Scissors", "Paper"]
+newPlayer = new Player(playerChoice)
 
 function showEmojis(element) {
   element.classList.remove("hidden")
@@ -49,7 +54,6 @@ function hideVisibility(element) {
 function showVisibility(element) {
   element.classList.remove("hidden")
 };
-
 
 function playClassic() {
   hideEmojis(classicGameButton);
@@ -84,7 +88,6 @@ function goHome() {
   hideVisibility(changeGameButton);
 };
 
-
 function gameView() {
   hideEmojis(classicGameButton);
   hideEmojis(difficultGameButton);
@@ -93,12 +96,8 @@ function gameView() {
   showVisibility(changeGameButton);
 };
 
-// function continuePlay() {
-//   gameView();
-// }
-
 function getRandomChoice() {
-var choices= ["rocks", "paper", "scissors"]
+var choices= ["Rocks", "Paper", "Scissors"]
   for(i = 0; i < choices.length; i++) {
   var randomChoice = Math.floor(Math.random() * choices.length);
   computerChoice = choices[randomChoice]
@@ -106,110 +105,79 @@ var choices= ["rocks", "paper", "scissors"]
     return computerChoice;
 };
 
-// function getPlayerChoice() {
-var playerChoice = ["rocks", "scissors", "paper"]
-// for(i = 0; i < playerChoices.length; i++) {
-//   playerChoice = playerChoices[i];
- newPlayer = new Player(playerChoice)
-//   }
-//   return playerChoice
-//   //showPlayerChoice();
-//   playGame()
-// };
-
 function clickPaper() {
-  {playerChoice = "paper"}
+  {playerChoice = "Paper"}
   playGame();
-  //showPlayerChoice();
-  //showCorrectChoice();
-}
+
+};
 
 function clickRocks() {
-  {playerChoice = "rocks"}
+  {playerChoice = "Rocks"}
   playGame();
-  //showPlayerChoice();
-//  showCorrectChoice();
-}
+};
 
 function clickScissors() {
-  //showEmojis(scissorsImage);
-  {playerChoice = "scissors"}
+  {playerChoice = "Scissors"}
   playGame();
-  //showPlayerChoice();
-  //showCorrectChoice();
-}
+};
 
 function playGame(player, computer) {
   hideVisibility(classicIcons)
   hideVisibility(fighterChoice)
   showVisibility(winnerAnnounce)
-//  var playerChoice = this.playerChoice;
- //newPlayer = new Player(playerChoice)
   computerChoice = getRandomChoice();
-// playerChoice = getPlayerChoice();
-  if (playerChoice === "paper" && computerChoice === "rocks") {
+  if (playerChoice === "Paper" && computerChoice === "Rocks") {
       winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
-      // console.log(playerChoice + " beats " + computerChoice + ". You won this round!");
-  } else if (playerChoice === "paper" && computerChoice === "scissors") {
+  } else if (playerChoice === "Paper" && computerChoice === "Scissors") {
       winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
-      // console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
-  } else if (playerChoice === "paper" && computerChoice === "paper") {
-      winnerAnnounce.innerText += `Its a draw`;
-      // console.log("Its a draw");
-  } else if (playerChoice === "rocks" && computerChoice === "rocks") {
-    winnerAnnounce.innerText += `Its a draw`;
-    //  console.log("Its a draw");
-  } else if (playerChoice === "rocks" && computerChoice === "scissors") {
+  } else if (playerChoice === "Paper" && computerChoice === "Paper") {
+      winnerAnnounce.innerText += `It's a draw`;
+  } else if (playerChoice === "Rocks" && computerChoice === "Rocks") {
+    winnerAnnounce.innerText += `It's a draw`;
+  } else if (playerChoice === "Rocks" && computerChoice === "Scissors") {
     winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
-      // console.log(playerChoice + " beats " + computerChoice + ". You won this round.");
-  } else if (playerChoice === "rocks" && computerChoice === "paper") {
+  } else if (playerChoice === "Rocks" && computerChoice === "Paper") {
     winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
-      // console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
-  } else if (playerChoice === "scissors" && computerChoice === "scissors") {
-    winnerAnnounce.innerText += `Its a draw`;
-      // console.log("Its a draw");
-  } else if (playerChoice === "scissors" && computerChoice === "rocks") {
+  } else if (playerChoice === "Scissors" && computerChoice === "Scissors") {
+    winnerAnnounce.innerText += `It's a draw`;
+  } else if (playerChoice === "Scissors" && computerChoice === "Rocks") {
     winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
-      // console.log(computerChoice + " beats " + playerChoice + ". You lost this round.");
-  } else if (playerChoice === "scissors" && computerChoice === "paper") {
+  } else if (playerChoice === "Scissors" && computerChoice === "Paper") {
     winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
-      // console.log(playerChoice + " beats " + computerChoice + ". You won this round.");
   }
-    //showCorrectChoice();
-    //showPlayerChoice();
-}
+ };
 
 function showCorrectChoice() {
 hideVisibility(classicIcons)
-//showVisibility(classicSelected)
   console.log(computerChoice)
-  //console.log(rocksImage)
   console.log(playerChoice)
-  if (computerChoice === "rocks") {
+  if (computerChoice === "Rocks") {
    classicSelected.innerHTML += `
    ${rocksShow}`;
-  } else if (computerChoice === "paper") {
+  } else if (computerChoice === "Paper") {
   classicSelected.innerHTML += `
   ${paperShow}`;
   } else if
-  (computerChoice === "scissors") {
+  (computerChoice === "Scissors") {
   classicSelected.innerHTML += `
   ${scissorsShow}`;
-
   }
   showPlayerChoice();
 };
 
 function showPlayerChoice() {
-  hideVisibility(classicIcons)
-  //showVisibility(classicSelected)
-  if (playerChoice === "rocks") {
+  hideVisibility(classicIcons);
+  if (playerChoice === "Rocks") {
   classicSelected.innerHTML += `${rocksShow}`;
-  } else if (playerChoice === "paper") {
+  } else if (playerChoice === "Paper") {
   classicSelected.innerHTML += `${paperShow}`;
-  } else if (playerChoice === "scissors") {
+  } else if (playerChoice === "Scissors") {
   classicSelected.innerHTML += `${scissorsShow}`;
   }
+ //playAgain();
+};
 
-}
-setTimeout(playClassic(), 3000);
+
+// function playAgain() {
+// window.setTimeout(getRandomChoice(), 2000)
+// }
