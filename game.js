@@ -1,9 +1,23 @@
 class Game {
   constructor() {
     this.type = "classic" || "difficult";
+    this.choices = ["Rock", "Paper", "Scissors"];
+    this.winner = winner;
 
   }
-}
+
+  chooseGame() {
+    if (this.type === "difficult") {
+      this.choices.push("Lizard", "Alien")
+    } else {
+    }
+  }
+
+  determineWinner() {
+    this.wins++
+    
+  }
+};
 // this,player = new player (human and girl emoji)
 // this.computer = instatiant new player class called human and computer
 //
