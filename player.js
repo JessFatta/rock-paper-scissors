@@ -20,7 +20,9 @@ class Player {
     // local storage for data persistance -- maybe not necessary?
   }
 
-  takeTurn(choice) {
+  // takeTurn() {
+  //   setTimeout(playClassic(), 4000)
+  // }
 
     // function getRandomChoice() {
     // var choices= ["Rocks", "Paper", "Scissors"]
@@ -57,5 +59,5 @@ class Player {
     //   }
     // };
 //if theres no choice aka players turn then get random index aka computer turn
-  }
+  //}
 }
