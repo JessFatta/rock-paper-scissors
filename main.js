@@ -26,6 +26,8 @@ var classicIcons = document.querySelector(".classic-icons");
 var classicSelected = document.querySelector(".classic-selected");
 var classicShown = document.querySelector(".classic-shown");
 
+var humanWins = document.querySelector(".human-wins");
+var computerWins = document.querySelector(".computer-wins");
 
 
 classicGameButton.addEventListener("click", playClassic);
@@ -43,13 +45,14 @@ lizardImage.addEventListener("click", playDifficult);
 
 classicIcons.addEventListener("click", showCorrectChoice);
 
+var newPlayer = new Player({name: "human", token: "🙋🏻‍♀️", player: playerChoice})
+var newPlayer2 = new Player({name: "computer", token: "💻", computer: computerChoice})
 
 var computerChoice;
 var playerChoice;
-//var playerChoice2;
-var playerChoice = ["Rocks", "Scissors", "Paper"]
-newPlayer = new Player(playerChoice)
-//newPlayer2 = new Player(playerChoice)
+var playerChoice = ["Rocks", "Scissors", "Paper"];
+var game = new Game({type: "classic" || "difficult", choices:["Rocks", "Paper", "Scissors"]})
+
 
 function showEmojis(element) {
   element.classList.remove("hidden")
@@ -77,10 +80,9 @@ function playClassic() {
   showVisibility(fighterChoice);
   showVisibility(changeGameButton);
   hideVisibility(winnerAnnounce);
-  //hideEmojis(playerChoice, computerChoice)
   showEmojis(classicIcons)
+  hideEmojis(classicSelected)
 };
-
 
 function playDifficult() {
   hideEmojis(classicGameButton);
@@ -104,9 +106,12 @@ function goHome() {
   showVisibility(chooseGameHeadline);
   hideVisibility(fighterChoice);
   hideVisibility(changeGameButton);
-//  hideVisibility(playerChoice);
-//  hideVisibility(computerChoice);
-  hideVisibility(playGame)
+  //hideVisibility(playGame)
+  hideVisibility(classicSelected)
+  hideVisibility(classicShown)
+  classicShown.innerHTML = "";
+  classicSelected.innerHTML = "";
+  winnerAnnounce.innerText = "";
 };
 
 function gameView() {
@@ -118,21 +123,24 @@ function gameView() {
 };
 
 function getRandomChoice() {
-var choices= ["Rocks", "Paper", "Scissors"];
+var choices = ["Rocks", "Paper", "Scissors"];
   for(i = 0; i < choices.length; i++) {
   var randomChoice = Math.floor(Math.random() * choices.length);
   computerChoice = choices[randomChoice]
-    }
+  }
     return computerChoice;
 };
 
 // function getRandomChoiceDifficult() {
-// var choices2= ["Rocks", "Paper", "Scissors", "Alien", "Lizard"];
-//   for(i = 0; i < choices2.length; i++) {
-//   var randomChoice2 = Math.floor(Math.random() * choices2.length);
-//   computerChoice2 = choices2[randomChoice2]
+//   if (this.type === "difficult") {
+//     choices.push("Lizard", "Alien")
+//     playerChoice.push("Lizard", "Alien")
+//   }
+//   for(i = 0; i < choices.length; i++) {
+//   var randomChoice = Math.floor(Math.random() * choices.length);
+//   computerChoice = choices[randomChoice]
 //     }
-//     return computerChoice2;
+//     return computerChoice;
 // };
 
 
@@ -140,7 +148,6 @@ function clickPaper() {
   {playerChoice = "Paper"}
   playGame();
 };
-
 
 function clickRocks() {
   {playerChoice = "Rocks"}
@@ -154,12 +161,12 @@ function clickScissors() {
 
 function clickAlien() {
   {playerChoice = "Alien"}
-  playGame();
+  playDifficultGame();
 };
 
 function clickLizard() {
   {playerChoice = "Lizard"}
-  playGame();
+  playDifficultGame();
 };
 
 function playGame(player, computer) {
@@ -168,85 +175,140 @@ function playGame(player, computer) {
   showVisibility(winnerAnnounce)
   computerChoice = getRandomChoice();
   if (playerChoice === "Paper" && computerChoice === "Rocks") {
-      winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
-  } else if (playerChoice === "Paper" && computerChoice === "Scissors") {
-      winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
-  } else if (playerChoice === "Paper" && computerChoice === "Paper") {
-      winnerAnnounce.innerText += `It's a draw`;
-  } else if (playerChoice === "Rocks" && computerChoice === "Rocks") {
-    winnerAnnounce.innerText += `It's a draw`;
-  } else if (playerChoice === "Rocks" && computerChoice === "Scissors") {
-    winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
-  } else if (playerChoice === "Rocks" && computerChoice === "Paper") {
-    winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
-  } else if (playerChoice === "Scissors" && computerChoice === "Scissors") {
-    winnerAnnounce.innerText += `It's a draw`;
-  } else if (playerChoice === "Scissors" && computerChoice === "Rocks") {
-    winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
-  } else if (playerChoice === "Scissors" && computerChoice === "Paper") {
-    winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
+      winnerAnnounce.innerText = `${playerChoice} beats ${computerChoice}. You won this round!`;
+      // humanWins.innerText = `${newPlayer.parsedWins++}`;
+    //  humanWins.innerText = newPlayer.retrieveWinsFromStorage();
+  };
+  if (playerChoice === "Paper" && computerChoice === "Scissors") {
+      winnerAnnounce.innerText = `${computerChoice} beats ${playerChoice}. You lost this round.`;
+  };
+  if (playerChoice === "Paper" && computerChoice === "Paper") {
+      winnerAnnounce.innerText = `It's a draw`;
   }
- };
+  if (playerChoice === "Rocks" && computerChoice === "Rocks") {
+    winnerAnnounce.innerText = `It's a draw`;
+  }
+  if (playerChoice === "Rocks" && computerChoice === "Scissors") {
+    winnerAnnounce.innerText = `${playerChoice} beats ${computerChoice}. You won this round!`;
+  }
+  if (playerChoice === "Rocks" && computerChoice === "Paper") {
+    winnerAnnounce.innerText = `${computerChoice} beats ${playerChoice}. You lost this round.`;
+  }
+  if (playerChoice === "Scissors" && computerChoice === "Scissors") {
+    winnerAnnounce.innerText = `It's a draw`;
+  }
+  if (playerChoice === "Scissors" && computerChoice === "Rocks") {
+    winnerAnnounce.innerText = `${computerChoice} beats ${playerChoice}. You lost this round.`;
+  }
+  if (playerChoice === "Scissors" && computerChoice === "Paper") {
+    winnerAnnounce.innerText = `${playerChoice} beats ${computerChoice}. You won this round!`;
+  }
+}
 
 function showCorrectChoice() {
 hideVisibility(classicIcons)
   console.log(computerChoice)
-  //console.log(computerChoice2)
   console.log(playerChoice)
   if (computerChoice === "Rocks") {
-   classicSelected.innerHTML += `
-   ${rocksShow}`;
-  } else if (computerChoice === "Paper") {
-  classicSelected.innerHTML += `
-  ${paperShow}`;
-  } else if (computerChoice === "Scissors") {
-  classicSelected.innerHTML += `
-  ${scissorsShow}`;
-} else if (computerChoice2 === "Lizard") {
-  classicSelected.innerHTML += `${lizardShow}`;
-} else if (computerChoice2 === "Alien") {
-  classicSelected.innerHTML += `${alienShow}`;
-}
+   classicSelected.innerHTML = `${rocksShow}`;
+  }
+  if (computerChoice === "Paper") {
+  classicSelected.innerHTML = `${paperShow}`;
+  }
+  if (computerChoice === "Scissors") {
+  classicSelected.innerHTML = `${scissorsShow}`;
+  }
+  if (computerChoice === "Lizard") {
+  classicSelected.innerHTML = `${lizardShow}`;
+  }
+  if (computerChoice === "Alien") {
+  classicSelected.innerHTML = `${alienShow}`;
+  }
   showPlayerChoice();
 };
 
 function showPlayerChoice() {
   hideVisibility(classicIcons);
   if (playerChoice === "Rocks") {
-  classicSelected.innerHTML += `${rocksShow}`;
-  setTimeout(playClassic, 4000)
-  } else if (playerChoice === "Paper") {
-  classicSelected.innerHTML += `${paperShow}`;
-  setTimeout(playClassic, 4000)
-  } else if (playerChoice === "Scissors") {
-  classicSelected.innerHTML += `${scissorsShow}`;
-  setTimeout(playClassic, 4000)
-  } else if (computerChoice === "Lizard") {
-    classicSelected.innerHTML += `${lizardShow}`;
-    setTimeout(playClassic, 4000)
-  } else if (computerChoice === "Alien") {
-    classicSelected.innerHTML += `${alienShow}`;
-  setTimeout(playClassic, 4000)
+    classicSelected.innerHTML += `${rocksShow}`;
   }
-  newGame()
+  if (playerChoice === "Paper") {
+    classicSelected.innerHTML += `${paperShow}`;
+  }
+  if (playerChoice === "Scissors") {
+    classicSelected.innerHTML += `${scissorsShow}`;
+  }
+  if (computerChoice === "Lizard") {
+    classicSelected.innerHTML += `${lizardShow}`;
+  }
+  if (computerChoice === "Alien") {
+    classicSelected.innerHTML += `${alienShow}`;
+}
+  resetBoard();
 };
 
-function newGame() {
- hideVisibility(classicShown)
+function resetBoard() {
+  console.log("reset")
+ setTimeout(playClassic, 2000)
+  showVisibility(classicSelected)
+  hideVisibility(chooseGameHeadline)
+  //classicShown.innerHTML = "";
+//classicSelected.innerHTML = "";
+//  playClassic();
+  //winnerAnnounce.innerText = "";
+  //showVisibility(fighterChoice);
+  //clearTimeout();
+};
 
+
+function updateWins(player) {
+  player.wins++
+  player.saveWinsToStorage()
+  var playerWins = player.retrieveWinsFromStorage()
+  showWins(playerWins)
 }
 
- // var timeout = setTimeout(playClassic, 4000)
-// function time() {
-//   setTimeout(4000)
-//   playClassic();
-  //showEmojis(classicIcons)
-//  hideEmojis(paperShow)
-//  hideVisibility(classicSelected)
-  //hideVisibility(fighterChoice)
- // hideVisibility(winnerAnnounce)
-//}
+function showWins(player) {
+  if (player.name === "human") {
+    humanWins.innerText = `${newPlayer.parsedWins++};`
+  }
+  if (player2.name === "computer") {
+    computerWins.innerText = `${newPlayer2.parsedWins++}`
+  }
+};
 
+// humanWins.innerText = `${newPlayer.parsedWins++}`;
+
+// function playDifficultGame(player, computer) {
+//   playGame(player, computer);
+//   computerChoice = getRandomChoiceDifficult();
+//   if (playerChoice === "Alien" && computerChoice === "Rocks") {
+//       winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
+//   }
+//   if (playerChoice === "Alien" && computerChoice === "Scissors") {  winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
+//   }
+//   if (playerChoice === "Alien" && computerChoice === "Alien") {
+//       winnerAnnounce.innerText += `It's a draw`;
+//   }
+//   if (playerChoice === "Paper" && computerChoice === "Alien") {
+//       winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
+//   }
+//   if (playerChoice === "Lizard" && computerChoice === "Alien") {
+//       winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
+//   }
+//   if (playerChoice === "Lizard" && computerChoice === "Paper") {
+//       winnerAnnounce.innerText += `${playerChoice} beats ${computerChoice}. You won this round!`;
+//   }
+//   if (playerChoice === "Lizard" && computerChoice2 === "Lizard") {
+//       winnerAnnounce.innerText += `It's a draw`;
+//   }
+//   if (playerChoice === "Lizard" && computerChoice === "Scissors") {
+//       winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
+//   }
+//   if (playerChoice === "Lizard" && computerChoice === "Rocks") {
+//       winnerAnnounce.innerText += `${computerChoice} beats ${playerChoice}. You lost this round.`;
+//     }
+//  };
 
 
 // function playDifficultGame(player, computer) {
