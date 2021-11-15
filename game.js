@@ -1,8 +1,8 @@
 class Game {
-  constructor() {
+  constructor(game) {
     this.type = "classic" || "difficult";
-    this.choices = ["Rock", "Paper", "Scissors"];
-    this.winner = winner;
+    this.choices = ["Rocks", "Paper", "Scissors"];
+    this.winner = game.winner;
 
   }
 
@@ -13,9 +13,9 @@ class Game {
     }
   }
 
+
   determineWinner() {
-    this.wins++
-    
+  
   }
 };
 // this,player = new player (human and girl emoji)

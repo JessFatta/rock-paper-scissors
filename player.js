@@ -1,27 +1,26 @@
 class Player {
-  constructor(name, token, wins, playerChoice) {
-    this.name = name;
-    this.token = token;
-    this.wins = wins;
+  constructor(player) {
+    this.name = player.name;
+    this.token = player.token;
+    this.wins = 0;
     this.playerChoice = playerChoice;
-   //this.computerChoice = computerChoice;
   }
 
-
-//setTimeout(playClassic(), 1000){
-
-//}
-
   saveWinsToStorage() {
-  // local storage and increment wins
+    var jsonWins = JSON.stringify(this.wins)
+    localStorage.setItem(`${this.name}`, jsonWins);
   }
 
   retrieveWinsFromStorage() {
-    // local storage for data persistance -- maybe not necessary?
-  }
+    //this.wins++
+    var savedWins = localStorage.getItem(`${this.name}`);
+    var parsedWins = JSON.parse(wins);
+    this.wins = parsedWins;
+    return parsedWins
+    console.log(parsedWins)
+  };
 
   // takeTurn() {
-  //   setTimeout(playClassic(), 4000)
   // }
 
     // function getRandomChoice() {
