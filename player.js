@@ -3,7 +3,8 @@ class Player {
     this.name = player.name;
     this.token = player.token;
     this.wins = 0;
-    this.playerChoice = playerChoice;
+    this.playerChoiceClassic = playerChoiceClassic;
+    this.playerChoiceDifficult = playerChoiceDifficult;
   }
 
   saveWinsToStorage() {
@@ -12,7 +13,7 @@ class Player {
   }
 
   retrieveWinsFromStorage() {
-    //this.wins++
+    this.wins++
     var savedWins = localStorage.getItem(`${this.name}`);
     var parsedWins = JSON.parse(wins);
     this.wins = parsedWins;
@@ -20,8 +21,18 @@ class Player {
     console.log(parsedWins)
   };
 
-  // takeTurn() {
-  // }
+  takeTurn() {
+
+}
+    // getRandomChoice() {
+    // var choices = ["Rocks", "Paper", "Scissors"];
+    //   for(i = 0; i < choices.length; i++) {
+    //   var randomChoice = Math.floor(Math.random() * choices.length);
+    //   computerChoice = choices[randomChoice]
+    //   }
+    //     return computerChoice;
+    // };
+  }
 
     // function getRandomChoice() {
     // var choices= ["Rocks", "Paper", "Scissors"]
@@ -59,4 +70,3 @@ class Player {
     // };
 //if theres no choice aka players turn then get random index aka computer turn
   //}
-}
