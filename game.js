@@ -1,21 +1,23 @@
 class Game {
   constructor(game) {
     this.type = "classic" || "difficult";
-    this.choices = ["Rocks", "Paper", "Scissors"];
+    //this.choices = ["Rocks", "Paper", "Scissors"];
+    //this.choices2 = ["Rocks", "Paper", "Scissors", "Alien", "Lizard"];
     this.winner = game.winner;
 
   }
 
-  chooseGame() {
-    if (this.type === "difficult") {
-      this.choices.push("Lizard", "Alien")
-    } else {
-    }
-  }
+  // chooseGame() {
+  //   if (this.type === "difficult") {
+  //   //  this.choices.push("Lizard", "Alien")
+  //   //this.choices2
+  //   } else {
+  //   }
+  // }
 
 
   determineWinner() {
-  
+
   }
 };
 // this,player = new player (human and girl emoji)
