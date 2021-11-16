@@ -99,36 +99,15 @@ main {
 }
 
 .paper-image,
-.paper-image-difficult {
-  height: 150px;
-  width: 150px;
-}
-
 .rocks-image,
-.rocks-image-difficult {
-  height: 150px;
-  width: 150px;
-}
-
 .scissors-image,
-.scissors-image-difficult {
-  height: 150px;
-  width: 150px;
-}
-
 .alien-image,
-.alien-image-difficult {
-  height: 150px;
-  width: 150px;
-}
-
 .lizard-image,
-.lizard-image-difficult {
+.person,
+.computer {
   height: 150px;
   width: 150px;
 }
-
-
 
 .hidden {
   display: none;

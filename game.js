@@ -1,19 +1,20 @@
 class Game {
-  constructor(game) {
-    this.type = "classic" || "difficult";
-    //this.choices = ["Rocks", "Paper", "Scissors"];
-    //this.choices2 = ["Rocks", "Paper", "Scissors", "Alien", "Lizard"];
-    this.winner = game.winner;
+  constructor(type) {
+    this.player = new Player
+
+    this.type = type || "classic";
+    this.choices = ["Rocks", "Paper", "Scissors"];
+    // this.choicesDifficult = ["Rocks", "Paper", "Scissors", "Alien", "Lizard"];
+    // this.winner = game.winner;
 
   }
 
-  // chooseGame() {
-  //   if (this.type === "difficult") {
-  //   //  this.choices.push("Lizard", "Alien")
-  //   //this.choices2
-  //   } else {
-  //   }
-  // }
+  chooseGame(type) {
+    this.type = type;
+    if (this.type === "difficult") {
+    this.choices.push("Lizard", "Alien")
+    }
+  }
 
 
   determineWinner() {

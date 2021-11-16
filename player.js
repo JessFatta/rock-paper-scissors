@@ -1,24 +1,24 @@
 class Player {
-  constructor(player) {
-    this.name = player.name;
-    this.token = player.token;
+  constructor(name, emoji) {
+    this.name = name;
+    this.token = emoji;
     this.wins = 0;
-    this.playerChoiceClassic = playerChoiceClassic;
-    this.playerChoiceDifficult = playerChoiceDifficult;
+  //  this.playerChoiceClassic = player.playerChoiceClassic;
+    //this.playerChoiceDifficult = player.playerChoiceDifficult;
   }
 
   saveWinsToStorage() {
     var jsonWins = JSON.stringify(this.wins)
-    localStorage.setItem(`${this.name}`, jsonWins);
+    localStorage.setItem(this.name, jsonWins);
   }
 
   retrieveWinsFromStorage() {
-    this.wins++
-    var savedWins = localStorage.getItem(`${this.name}`);
-    var parsedWins = JSON.parse(wins);
+  //  this.wins++
+    var savedWins = localStorage.getItem(this.name);
+    var parsedWins = JSON.parse(savedWins);
     this.wins = parsedWins;
     return parsedWins
-    console.log(parsedWins)
+  //  console.log(parsedWins)
   };
 
   takeTurn() {
