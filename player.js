@@ -1,27 +1,38 @@
 class Player {
-  constructor(player) {
-    this.name = player.name;
-    this.token = player.token;
+  constructor(name, emoji) {
+    this.name = name;
+    this.token = emoji;
     this.wins = 0;
-    this.playerChoice = playerChoice;
+  //  this.playerChoiceClassic = player.playerChoiceClassic;
+    //this.playerChoiceDifficult = player.playerChoiceDifficult;
   }
 
   saveWinsToStorage() {
     var jsonWins = JSON.stringify(this.wins)
-    localStorage.setItem(`${this.name}`, jsonWins);
+    localStorage.setItem(this.name, jsonWins);
   }
 
   retrieveWinsFromStorage() {
-    //this.wins++
-    var savedWins = localStorage.getItem(`${this.name}`);
-    var parsedWins = JSON.parse(wins);
+  //  this.wins++
+    var savedWins = localStorage.getItem(this.name);
+    var parsedWins = JSON.parse(savedWins);
     this.wins = parsedWins;
     return parsedWins
-    console.log(parsedWins)
+  //  console.log(parsedWins)
   };
 
-  // takeTurn() {
-  // }
+  takeTurn() {
+
+}
+    // getRandomChoice() {
+    // var choices = ["Rocks", "Paper", "Scissors"];
+    //   for(i = 0; i < choices.length; i++) {
+    //   var randomChoice = Math.floor(Math.random() * choices.length);
+    //   computerChoice = choices[randomChoice]
+    //   }
+    //     return computerChoice;
+    // };
+  }
 
     // function getRandomChoice() {
     // var choices= ["Rocks", "Paper", "Scissors"]
@@ -59,4 +70,3 @@ class Player {
     // };
 //if theres no choice aka players turn then get random index aka computer turn
   //}
-}
