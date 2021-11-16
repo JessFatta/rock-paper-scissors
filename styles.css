@@ -98,30 +98,37 @@ main {
   flex-direction: row;
 }
 
-.paper-image {
+.paper-image,
+.paper-image-difficult {
   height: 150px;
   width: 150px;
 }
 
-.rocks-image {
+.rocks-image,
+.rocks-image-difficult {
   height: 150px;
   width: 150px;
 }
 
-.scissors-image {
+.scissors-image,
+.scissors-image-difficult {
   height: 150px;
   width: 150px;
 }
 
-.alien-image {
+.alien-image,
+.alien-image-difficult {
   height: 150px;
   width: 150px;
 }
 
-.lizard-image {
+.lizard-image,
+.lizard-image-difficult {
   height: 150px;
   width: 150px;
 }
+
+
 
 .hidden {
   display: none;
