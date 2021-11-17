@@ -60,8 +60,8 @@ Different versions:
 ---------
 
 ### Contributors
-Jessica Fatta
-https://github.com/JessFatta
+Jessica Fatta: https://github.com/JessFatta
+
 --------
 ### Links
 
