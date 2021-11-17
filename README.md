@@ -61,7 +61,7 @@ Different versions:
 
 ### Contributors
 Jessica Fatta
-github.com/JessFatta
+https://github.com/JessFatta
 --------
 ### Links
 
