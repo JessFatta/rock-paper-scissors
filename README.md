@@ -66,6 +66,8 @@ Jessica Fatta: https://github.com/JessFatta
 ### Links
 
 Repository Link: https://github.com/JessFatta/rock-paper-scissors
+Deploy Link: https://jessfatta.github.io/rock-paper-scissors/
+
 
 -----
 ### Reflections
